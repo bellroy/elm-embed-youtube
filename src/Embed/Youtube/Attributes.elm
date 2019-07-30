@@ -1,10 +1,9 @@
 module Embed.Youtube.Attributes exposing
     ( width, height
     , autoplay, loop, start, end, mute
-    , modestBranding, playsInline, hideControls, disableKeyboard, disableFullscreen, disableVideoAnnotations
+    , colorRed, colorWhite, modestBranding, playsInline, hideControls, disableKeyboard, disableFullscreen, disableVideoAnnotations
     , language
     , closedCaptionsLanguagePreference, closedCaptionsLanguageAlwaysShow
-    , colorRed, colorWhite
     )
 
 {-| Helper functions for Youtube Embed Attributes.
@@ -22,7 +21,7 @@ module Embed.Youtube.Attributes exposing
 
 # Styling
 
-@docs color, colour, PlayerProgressBarColor, modestBranding, playsInline, hideControls, disableKeyboard, disableFullscreen, disableVideoAnnotations
+@docs colorRed, colorWhite, modestBranding, playsInline, hideControls, disableKeyboard, disableFullscreen, disableVideoAnnotations
 
 
 # Language
@@ -33,11 +32,6 @@ module Embed.Youtube.Attributes exposing
 # Closed Captions
 
 @docs closedCaptionsLanguagePreference, closedCaptionsLanguageAlwaysShow
-
-
-# Rendering
-
-@docs toQueryParameters, toHtmlAttributes
 
 -}
 
