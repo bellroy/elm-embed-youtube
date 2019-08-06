@@ -18,7 +18,7 @@ toIframe yt =
             |> src
          , type_ "text/html"
          , attribute "allowfullscreen" "true"
-         , attribute "allow" "fullscreen, autoplay"
+         , attribute "allow" "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
          , attribute "frameborder" "0"
          ]
             ++ toHtmlAttributes yt

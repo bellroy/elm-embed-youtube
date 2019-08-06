@@ -5211,7 +5211,7 @@ var author$project$Embed$Youtube$Internal$View$toIframe = function (yt) {
 						author$project$Embed$Youtube$Internal$View$toYoutubeUrl(yt))),
 					elm$html$Html$Attributes$type_('text/html'),
 					A2(elm$html$Html$Attributes$attribute, 'allowfullscreen', 'true'),
-					A2(elm$html$Html$Attributes$attribute, 'allow', 'fullscreen, autoplay'),
+					A2(elm$html$Html$Attributes$attribute, 'allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen'),
 					A2(elm$html$Html$Attributes$attribute, 'frameborder', '0')
 				]),
 			author$project$Embed$Youtube$Internal$View$toHtmlAttributes(yt)),
