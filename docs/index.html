@@ -17,15 +17,23 @@
     <div class="row">
       <div class="col-md-6">
 <pre class="code code-elm"><code>
-import Embed.Youtube exposing (..)
-import Embed.Youtube.Attributes exposing (..)
-import Html
-
 view : Model -> Html.Html Msg
 view _ =
+    let
+        youtube =
+            fromString "kBZsyksIgNE"
+    in
     Html.div []
-        [ fromString "kBZsyksIgNE"
-            |> attributes
+        [ Html.h2 [] [ Html.text "Thumbnail" ]
+        , Html.img
+            [ toUrl HighQuality youtube
+                |> Url.toString
+                |> Html.Attributes.src
+            ]
+            []
+        , Html.h2 [] [ Html.text "Embed" ]
+        , toHtml <|
+            attributes
                 [ width 530
                 , height 300
                 , start 54
@@ -36,8 +44,9 @@ view _ =
                 , disableFullscreen
                 , disableKeyboard
                 ]
-            |> toHtml
+                youtube
         ]
+
 </code></pre>
       </div>
       <div class="col-md-6">

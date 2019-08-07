@@ -3,7 +3,10 @@ module Example exposing (main)
 import Browser exposing (element)
 import Embed.Youtube exposing (..)
 import Embed.Youtube.Attributes exposing (..)
+import Embed.Youtube.Thumbnail as Thumb exposing (..)
 import Html
+import Html.Attributes
+import Url
 
 
 type Model
@@ -36,9 +39,21 @@ update msg model =
 
 view : Model -> Html.Html Msg
 view _ =
+    let
+        youtube =
+            fromString "kBZsyksIgNE"
+    in
     Html.div []
-        [ fromString "kBZsyksIgNE"
-            |> attributes
+        [ Html.h2 [] [ Html.text "Thumbnail" ]
+        , Html.img
+            [ Thumb.toUrl Thumb.HighQuality youtube
+                |> Url.toString
+                |> Html.Attributes.src
+            ]
+            []
+        , Html.h2 [] [ Html.text "Embed" ]
+        , toHtml <|
+            attributes
                 [ width 530
                 , height 300
                 , start 54
@@ -49,5 +64,5 @@ view _ =
                 , disableFullscreen
                 , disableKeyboard
                 ]
-            |> toHtml
+                youtube
         ]

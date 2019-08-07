@@ -5244,13 +5244,76 @@ var author$project$Embed$Youtube$Internal$Attribute$Width = function (a) {
 	return {$: 0, a: a};
 };
 var author$project$Embed$Youtube$Attributes$width = author$project$Embed$Youtube$Internal$Attribute$Width;
+var author$project$Embed$Youtube$Thumbnail$HighQuality = 6;
+var author$project$Embed$Youtube$Thumbnail$thumbnailVariantToImageName = function (thumbnailVariant) {
+	switch (thumbnailVariant) {
+		case 0:
+			return '0.jpg';
+		case 1:
+			return '1.jpg';
+		case 2:
+			return '2.jpg';
+		case 3:
+			return '3.jpg';
+		case 4:
+			return 'sddefault.jpg';
+		case 5:
+			return 'mqdefault.jpg';
+		case 6:
+			return 'hqdefault.jpg';
+		case 7:
+			return 'default.jpg';
+		default:
+			return 'maxresdefault.jpg';
+	}
+};
+var author$project$Embed$Youtube$Thumbnail$toUrl = F2(
+	function (variant, _n0) {
+		var stringYoutubeVideoid = _n0.a;
+		return {
+			al: elm$core$Maybe$Nothing,
+			an: 'img.youtube.com',
+			ax: '/vi/' + (stringYoutubeVideoid + ('/' + author$project$Embed$Youtube$Thumbnail$thumbnailVariantToImageName(variant))),
+			ay: elm$core$Maybe$Nothing,
+			az: 1,
+			aA: elm$core$Maybe$Nothing
+		};
+	});
 var elm$html$Html$div = _VirtualDom_node('div');
+var elm$html$Html$h2 = _VirtualDom_node('h2');
+var elm$html$Html$img = _VirtualDom_node('img');
+var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
 var author$project$Example$view = function (_n0) {
+	var youtube = author$project$Embed$Youtube$fromString('kBZsyksIgNE');
 	return A2(
 		elm$html$Html$div,
 		_List_Nil,
 		_List_fromArray(
 			[
+				A2(
+				elm$html$Html$h2,
+				_List_Nil,
+				_List_fromArray(
+					[
+						elm$html$Html$text('Thumbnail')
+					])),
+				A2(
+				elm$html$Html$img,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$src(
+						elm$url$Url$toString(
+							A2(author$project$Embed$Youtube$Thumbnail$toUrl, 6, youtube)))
+					]),
+				_List_Nil),
+				A2(
+				elm$html$Html$h2,
+				_List_Nil,
+				_List_fromArray(
+					[
+						elm$html$Html$text('Embed')
+					])),
 				author$project$Embed$Youtube$toHtml(
 				A2(
 					author$project$Embed$Youtube$attributes,
@@ -5266,7 +5329,7 @@ var author$project$Example$view = function (_n0) {
 							author$project$Embed$Youtube$Attributes$disableFullscreen,
 							author$project$Embed$Youtube$Attributes$disableKeyboard
 						]),
-					author$project$Embed$Youtube$fromString('kBZsyksIgNE')))
+					youtube))
 			]));
 };
 var elm$browser$Browser$External = function (a) {

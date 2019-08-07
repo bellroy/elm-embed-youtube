@@ -8,6 +8,8 @@ import Url exposing (Protocol(..), Url)
 import Url.Builder exposing (QueryParameter, int, string, toQuery)
 
 
+{-| Render Youtube as an embedded iFrame
+-}
 toIframe :
     Youtube
     -> Html msg
