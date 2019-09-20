@@ -5125,7 +5125,7 @@ var author$project$Embed$Youtube$Internal$View$toYoutubeUrl = function (yt) {
 	var stringYoutubeVideoid = yt.a;
 	return {
 		al: elm$core$Maybe$Nothing,
-		an: 'www.youtube.com',
+		an: 'nocookie.youtube.com',
 		ax: '/embed/' + stringYoutubeVideoid,
 		ay: elm$core$Maybe$Nothing,
 		az: 1,
