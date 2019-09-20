@@ -1,8 +1,11 @@
 <html>
+
 <head>
   <script src="./example.js" type="text/javascript"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
   <div class="container">
     <div class="jumbotron">
@@ -10,13 +13,14 @@
       <p class="lead">A simple way of embedding a Youtube player using an Iframe in Elm.</p>
       <hr class="my-4">
 
-      <a class="btn btn-primary btn-lg" href="https://package.elm-lang.org/packages/tricycle/elm-embed-youtube/latest" role="button">Documentation</a>
+      <a class="btn btn-primary btn-lg" href="https://package.elm-lang.org/packages/tricycle/elm-embed-youtube/latest"
+        role="button">Documentation</a>
       <a class="btn btn-secondary btn-lg" href="https://github.com/tricycle/elm-embed-youtube" role="button">Source</a>
     </div>
 
     <div class="row">
       <div class="col-md-6">
-<pre class="code code-elm"><code>
+        <pre class="code code-elm"><code>
 view : Model -> Html.Html Msg
 view _ =
     let
@@ -36,13 +40,8 @@ view _ =
             attributes
                 [ width 530
                 , height 300
-                , start 54
-                , autoplay
-                , loop
-                , language "nl"
-                , modestBranding
-                , disableFullscreen
-                , disableKeyboard
+                , language "en"
+                , playsInline
                 ]
                 youtube
         ]
@@ -52,11 +51,14 @@ view _ =
       <div class="col-md-6">
         <main></main>
         <script>
-          var app = Elm.Example.init({ node: document.querySelector('main') })
-         </script>
+          var app = Elm.Example.init({
+            node: document.querySelector('main')
+          })
+        </script>
       </div>
     </div>
   </div>
 
 </body>
+
 </html>

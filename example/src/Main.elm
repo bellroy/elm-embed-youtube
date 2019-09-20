@@ -56,13 +56,8 @@ view _ =
             attributes
                 [ width 530
                 , height 300
-                , start 54
-                , autoplay
-                , loop
-                , language "nl"
-                , modestBranding
-                , disableFullscreen
-                , disableKeyboard
+                , language "en"
+                , playsInline
                 ]
                 youtube
         ]

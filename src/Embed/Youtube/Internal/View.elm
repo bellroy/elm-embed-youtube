@@ -20,7 +20,7 @@ toIframe yt =
             |> src
          , type_ "text/html"
          , attribute "allowfullscreen" "true"
-         , attribute "allow" "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+         , attribute "allow" "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; webkit-playsinline; playsinline"
          , attribute "frameborder" "0"
          ]
             ++ toHtmlAttributes yt
@@ -48,7 +48,10 @@ toQueryParameters :
     -> List QueryParameter
 toQueryParameters (Youtube youtubeVideoId attributes) =
     List.foldl (\a -> (++) (toQueryParameters_ youtubeVideoId a)) [] attributes
-        ++ [ string "version" "3", string "rel" "0" ]
+        ++ [ string "version" "3"
+           , string "rel" "0"
+           , string "enablejsapi" "1"
+           ]
 
 
 {-| Takes a list of attributes and creates a list of Html Attributes for the embedded element.

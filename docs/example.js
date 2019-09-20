@@ -5086,7 +5086,8 @@ var author$project$Embed$Youtube$Internal$View$toQueryParameters = function (_n0
 		_List_fromArray(
 			[
 				A2(elm$url$Url$Builder$string, 'version', '3'),
-				A2(elm$url$Url$Builder$string, 'rel', '0')
+				A2(elm$url$Url$Builder$string, 'rel', '0'),
+				A2(elm$url$Url$Builder$string, 'enablejsapi', '1')
 			]));
 };
 var elm$url$Url$Https = 1;
@@ -5211,19 +5212,13 @@ var author$project$Embed$Youtube$Internal$View$toIframe = function (yt) {
 						author$project$Embed$Youtube$Internal$View$toYoutubeUrl(yt))),
 					elm$html$Html$Attributes$type_('text/html'),
 					A2(elm$html$Html$Attributes$attribute, 'allowfullscreen', 'true'),
-					A2(elm$html$Html$Attributes$attribute, 'allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen'),
+					A2(elm$html$Html$Attributes$attribute, 'allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; webkit-playsinline; playsinline'),
 					A2(elm$html$Html$Attributes$attribute, 'frameborder', '0')
 				]),
 			author$project$Embed$Youtube$Internal$View$toHtmlAttributes(yt)),
 		_List_Nil);
 };
 var author$project$Embed$Youtube$toHtml = author$project$Embed$Youtube$Internal$View$toIframe;
-var author$project$Embed$Youtube$Internal$Attribute$Autoplay = {$: 2};
-var author$project$Embed$Youtube$Attributes$autoplay = author$project$Embed$Youtube$Internal$Attribute$Autoplay;
-var author$project$Embed$Youtube$Internal$Attribute$DisableFullscreen = {$: 13};
-var author$project$Embed$Youtube$Attributes$disableFullscreen = author$project$Embed$Youtube$Internal$Attribute$DisableFullscreen;
-var author$project$Embed$Youtube$Internal$Attribute$DisableKeyboard = {$: 12};
-var author$project$Embed$Youtube$Attributes$disableKeyboard = author$project$Embed$Youtube$Internal$Attribute$DisableKeyboard;
 var author$project$Embed$Youtube$Internal$Attribute$Height = function (a) {
 	return {$: 1, a: a};
 };
@@ -5232,14 +5227,8 @@ var author$project$Embed$Youtube$Internal$Attribute$Language = function (a) {
 	return {$: 15, a: a};
 };
 var author$project$Embed$Youtube$Attributes$language = author$project$Embed$Youtube$Internal$Attribute$Language;
-var author$project$Embed$Youtube$Internal$Attribute$Loop = {$: 3};
-var author$project$Embed$Youtube$Attributes$loop = author$project$Embed$Youtube$Internal$Attribute$Loop;
-var author$project$Embed$Youtube$Internal$Attribute$ModestBranding = {$: 9};
-var author$project$Embed$Youtube$Attributes$modestBranding = author$project$Embed$Youtube$Internal$Attribute$ModestBranding;
-var author$project$Embed$Youtube$Internal$Attribute$Start = function (a) {
-	return {$: 4, a: a};
-};
-var author$project$Embed$Youtube$Attributes$start = author$project$Embed$Youtube$Internal$Attribute$Start;
+var author$project$Embed$Youtube$Internal$Attribute$PlaysInline = {$: 10};
+var author$project$Embed$Youtube$Attributes$playsInline = author$project$Embed$Youtube$Internal$Attribute$PlaysInline;
 var author$project$Embed$Youtube$Internal$Attribute$Width = function (a) {
 	return {$: 0, a: a};
 };
@@ -5321,13 +5310,8 @@ var author$project$Example$view = function (_n0) {
 						[
 							author$project$Embed$Youtube$Attributes$width(530),
 							author$project$Embed$Youtube$Attributes$height(300),
-							author$project$Embed$Youtube$Attributes$start(54),
-							author$project$Embed$Youtube$Attributes$autoplay,
-							author$project$Embed$Youtube$Attributes$loop,
-							author$project$Embed$Youtube$Attributes$language('nl'),
-							author$project$Embed$Youtube$Attributes$modestBranding,
-							author$project$Embed$Youtube$Attributes$disableFullscreen,
-							author$project$Embed$Youtube$Attributes$disableKeyboard
+							author$project$Embed$Youtube$Attributes$language('en'),
+							author$project$Embed$Youtube$Attributes$playsInline
 						]),
 					youtube))
 			]));
