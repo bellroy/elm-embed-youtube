@@ -20,7 +20,7 @@ toIframe yt =
             |> src
          , type_ "text/html"
          , attribute "allowfullscreen" "true"
-         , attribute "allow" "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; webkit-playsinline; playsinline"
+         , attribute "allow" "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
          , attribute "frameborder" "0"
          ]
             ++ toHtmlAttributes yt
@@ -121,7 +121,9 @@ toQueryParameters_ (YoutubeVideoId stringYoutubeVideoId) attribute =
             ]
 
         PlaysInline ->
-            [ string "playsinline" "1" ]
+            [ string "playsinline" "1"
+            , string "webkit-playsinline" "1"
+            ]
 
         HideControls ->
             [ string "controls" "0" ]

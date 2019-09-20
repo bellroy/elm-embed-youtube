@@ -5030,7 +5030,8 @@ var author$project$Embed$Youtube$Internal$View$toQueryParameters_ = F2(
 			case 10:
 				return _List_fromArray(
 					[
-						A2(elm$url$Url$Builder$string, 'playsinline', '1')
+						A2(elm$url$Url$Builder$string, 'playsinline', '1'),
+						A2(elm$url$Url$Builder$string, 'webkit-playsinline', '1')
 					]);
 			case 11:
 				return _List_fromArray(
@@ -5212,7 +5213,7 @@ var author$project$Embed$Youtube$Internal$View$toIframe = function (yt) {
 						author$project$Embed$Youtube$Internal$View$toYoutubeUrl(yt))),
 					elm$html$Html$Attributes$type_('text/html'),
 					A2(elm$html$Html$Attributes$attribute, 'allowfullscreen', 'true'),
-					A2(elm$html$Html$Attributes$attribute, 'allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; webkit-playsinline; playsinline'),
+					A2(elm$html$Html$Attributes$attribute, 'allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen'),
 					A2(elm$html$Html$Attributes$attribute, 'frameborder', '0')
 				]),
 			author$project$Embed$Youtube$Internal$View$toHtmlAttributes(yt)),
