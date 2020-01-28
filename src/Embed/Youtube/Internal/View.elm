@@ -33,7 +33,7 @@ toIframe yt =
 toYoutubeUrl : Youtube -> Url
 toYoutubeUrl ((Youtube (YoutubeVideoId stringYoutubeVideoid) _) as yt) =
     { protocol = Https
-    , host = "nocookie.youtube.com"
+    , host = "www.youtube-nocookie.com"
     , port_ = Nothing
     , path = "/embed/" ++ stringYoutubeVideoid
     , query =

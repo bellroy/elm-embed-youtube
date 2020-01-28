@@ -16,7 +16,7 @@ suite =
                     (View.toYoutubeUrl mockedYoutube
                         |> Url.toString
                     )
-                    "https://nocookie.youtube.com/embed/ytvideoid?version=3&rel=0&enablejsapi=1"
+                    "https://www.youtube-nocookie.com/embed/ytvideoid?version=3&rel=0&enablejsapi=1"
         ]
 
 

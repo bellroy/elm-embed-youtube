@@ -1,4 +1,4 @@
-module Example exposing (main)
+module Main exposing (main)
 
 import Browser exposing (element)
 import Embed.Youtube exposing (..)
