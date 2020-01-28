@@ -1,11 +1,11 @@
-module Embed.Youtube.Internal.View exposing (toIframe)
+module Embed.Youtube.Internal.View exposing (toIframe, toYoutubeUrl)
 
 import Embed.Youtube.Internal.Attribute as YoutubeAttribute exposing (Attribute(..))
 import Embed.Youtube.Internal.Youtube exposing (Youtube(..), YoutubeVideoId(..))
-import Html as Html exposing (Attribute, Html, iframe)
-import Html.Attributes as HtmlAttribute exposing (attribute, height, src, type_, width)
+import Html as Html exposing (Html)
+import Html.Attributes as HtmlA
 import Url exposing (Protocol(..), Url)
-import Url.Builder exposing (QueryParameter, int, string, toQuery)
+import Url.Builder as UrlBuilder exposing (QueryParameter)
 
 
 {-| Render Youtube as an embedded iFrame
@@ -17,11 +17,11 @@ toIframe yt =
     Html.iframe
         ([ toYoutubeUrl yt
             |> Url.toString
-            |> src
-         , type_ "text/html"
-         , attribute "allowfullscreen" "true"
-         , attribute "allow" "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-         , attribute "frameborder" "0"
+            |> HtmlA.src
+         , HtmlA.type_ "text/html"
+         , HtmlA.attribute "allowfullscreen" "true"
+         , HtmlA.attribute "allow" "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+         , HtmlA.attribute "frameborder" "0"
          ]
             ++ toHtmlAttributes yt
         )
@@ -36,7 +36,11 @@ toYoutubeUrl ((Youtube (YoutubeVideoId stringYoutubeVideoid) _) as yt) =
     , host = "nocookie.youtube.com"
     , port_ = Nothing
     , path = "/embed/" ++ stringYoutubeVideoid
-    , query = Just <| toQuery <| toQueryParameters yt
+    , query =
+        toQueryParameters yt
+            |> UrlBuilder.toQuery
+            |> String.dropLeft 1
+            |> Just
     , fragment = Nothing
     }
 
@@ -48,9 +52,9 @@ toQueryParameters :
     -> List QueryParameter
 toQueryParameters (Youtube youtubeVideoId attributes) =
     List.foldl (\a -> (++) (toQueryParameters_ youtubeVideoId a)) [] attributes
-        ++ [ string "version" "3"
-           , string "rel" "0"
-           , string "enablejsapi" "1"
+        ++ [ UrlBuilder.string "version" "3"
+           , UrlBuilder.string "rel" "0"
+           , UrlBuilder.string "enablejsapi" "1"
            ]
 
 
@@ -69,10 +73,10 @@ toHtmlAttribute :
 toHtmlAttribute attribute =
     case attribute of
         Width a ->
-            Just <| width a
+            Just <| HtmlA.width a
 
         Height a ->
-            Just <| height a
+            Just <| HtmlA.height a
 
         _ ->
             Nothing
@@ -91,57 +95,57 @@ toQueryParameters_ (YoutubeVideoId stringYoutubeVideoId) attribute =
             []
 
         Autoplay ->
-            [ string "autoplay" "1"
-            , string "mute" "1"
+            [ UrlBuilder.string "autoplay" "1"
+            , UrlBuilder.string "mute" "1"
             ]
 
         Loop ->
-            [ string "loop" "1"
-            , string "playlist" stringYoutubeVideoId
+            [ UrlBuilder.string "loop" "1"
+            , UrlBuilder.string "playlist" stringYoutubeVideoId
             ]
 
         Start a ->
-            [ int "start" a ]
+            [ UrlBuilder.int "start" a ]
 
         End a ->
-            [ int "end" a ]
+            [ UrlBuilder.int "end" a ]
 
         Mute ->
-            [ string "mute" "1" ]
+            [ UrlBuilder.string "mute" "1" ]
 
         ColorRed ->
-            [ string "color" "red" ]
+            [ UrlBuilder.string "color" "red" ]
 
         ColorWhite ->
-            [ string "color" "white" ]
+            [ UrlBuilder.string "color" "white" ]
 
         ModestBranding ->
-            [ string "modestbranding" "1"
-            , string "showinfo" "1"
+            [ UrlBuilder.string "modestbranding" "1"
+            , UrlBuilder.string "showinfo" "1"
             ]
 
         PlaysInline ->
-            [ string "playsinline" "1"
-            , string "webkit-playsinline" "1"
+            [ UrlBuilder.string "playsinline" "1"
+            , UrlBuilder.string "webkit-playsinline" "1"
             ]
 
         HideControls ->
-            [ string "controls" "0" ]
+            [ UrlBuilder.string "controls" "0" ]
 
         DisableKeyboard ->
-            [ string "disablekb" "1" ]
+            [ UrlBuilder.string "disablekb" "1" ]
 
         DisableFullscreen ->
-            [ string "fs" "0" ]
+            [ UrlBuilder.string "fs" "0" ]
 
         VideoAnnotations ->
-            [ string "iv_load_policy" "3" ]
+            [ UrlBuilder.string "iv_load_policy" "3" ]
 
         Language a ->
-            [ string "hl" a ]
+            [ UrlBuilder.string "hl" a ]
 
         ClosedCaptionsLanguagePreference a ->
-            [ string "cc_lang_pref" a ]
+            [ UrlBuilder.string "cc_lang_pref" a ]
 
         ClosedCaptionsLanguageAlwaysShow ->
-            [ string "cc_load_policy" "1" ]
+            [ UrlBuilder.string "cc_load_policy" "1" ]
