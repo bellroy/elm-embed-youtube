@@ -3,7 +3,7 @@
     "name": "tricycle/elm-embed-youtube",
     "summary": "A wrapper around the Youtube iFrame Api",
     "license": "BSD-3-Clause",
-    "version": "1.1.2",
+    "version": "1.1.3",
     "exposed-modules": [
         "Embed.Youtube",
         "Embed.Youtube.Attributes",
