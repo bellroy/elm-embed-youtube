@@ -31,9 +31,9 @@ Check Embed.Youtube.Attributes for all the available Attribute helpers
 
 -}
 
-import Embed.Youtube.Internal.Attribute
-import Embed.Youtube.Internal.View
-import Embed.Youtube.Internal.Youtube
+import Embed.Youtube.Internal.Attribute as Internal
+import Embed.Youtube.Internal.View as Internal
+import Embed.Youtube.Internal.Youtube as Internal
 import Html exposing (Html)
 import Url exposing (Url)
 
@@ -41,25 +41,39 @@ import Url exposing (Url)
 {-| The type of an Youtube image
 -}
 type alias Youtube =
-    Embed.Youtube.Internal.Youtube.Youtube
+    Internal.Youtube
 
 
 {-| The type of a Youtube Attribute
 -}
 type alias Attribute =
-    Embed.Youtube.Internal.Attribute.Attribute
+    Internal.Attribute
 
 
-{-| Attempt to create a new Youtube from an (Youtube) Url containing the v= param.
+{-| Attempt to create a new Youtube
 
-    https://www.youtube.com/watch?v=xLLkZa662Fs
+from an (Youtube) Url containing the v= param.
+<https://www.youtube.com/watch?v=0D7GrGrN1bg>
+
+    import Url
+
+    Url.fromString "https://www.youtube.com/watch?v=0D7GrGrN1bg"
+    |> Maybe.andThen fromUrl
+    --> Just <| fromString "0D7GrGrN1bg"
+
+or from shortend links such as;
+<https://youtu.be/0D7GrGrN1bg>
+
+    import Url
+
+    Url.fromString "https://youtu.be/0D7GrGrN1bg"
+    |> Maybe.andThen fromUrl
+    --> Just <| fromString "0D7GrGrN1bg"
 
 -}
-fromUrl :
-    Url
-    -> Maybe Youtube
+fromUrl : Url -> Maybe Youtube
 fromUrl =
-    Embed.Youtube.Internal.Youtube.fromUrl
+    Internal.fromUrl
 
 
 {-| Create a new Youtube from a string representing a VideoId
@@ -67,25 +81,20 @@ fromUrl =
 **There is no validation on the input**
 
 -}
-fromString :
-    String
-    -> Youtube
+fromString : String -> Youtube
 fromString =
-    Embed.Youtube.Internal.Youtube.fromString
+    Internal.fromString
 
 
 {-| Add Attributes to your Youtube type
 -}
-attributes :
-    List Attribute
-    -> Youtube
-    -> Youtube
-attributes a yt =
-    Embed.Youtube.Internal.Youtube.attributes a yt
+attributes : List Attribute -> Youtube -> Youtube
+attributes =
+    Internal.attributes
 
 
 {-| Renders an iFrame based on your settings
 -}
 toHtml : Youtube -> Html msg
 toHtml =
-    Embed.Youtube.Internal.View.toIframe
+    Internal.toIframe

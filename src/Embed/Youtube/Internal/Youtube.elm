@@ -2,8 +2,8 @@ module Embed.Youtube.Internal.Youtube exposing (Youtube(..), YoutubeVideoId(..),
 
 import Embed.Youtube.Internal.Attribute exposing (Attribute(..))
 import Url exposing (Url)
-import Url.Parser exposing ((<?>), Parser, map, parse, s)
-import Url.Parser.Query exposing (string)
+import Url.Parser exposing ((<?>), Parser, map, oneOf, parse, s, string)
+import Url.Parser.Query as Query
 
 
 type Youtube
@@ -14,11 +14,6 @@ type YoutubeVideoId
     = YoutubeVideoId String
 
 
-{-| Attempt to create a new Youtube from an (Youtube) Url containing the v= param.
-
-    https://www.youtube.com/watch?v=xLLkZa662Fs
-
--}
 fromUrl :
     Url
     -> Maybe Youtube
@@ -31,11 +26,6 @@ fromUrl url =
             Nothing
 
 
-{-| Create a new Youtube from a string representing a VideoId
-
-**There is no validation on the input**
-
--}
 fromString :
     String
     -> Youtube
@@ -62,5 +52,8 @@ parseVideoId :
         )
         (Maybe YoutubeVideoId)
 parseVideoId =
-    map (Maybe.map YoutubeVideoId)
-        (s "watch" <?> string "v")
+    oneOf
+        [ map (Maybe.map YoutubeVideoId)
+            (s "watch" <?> Query.string "v")
+        , map (Just << YoutubeVideoId) string
+        ]
