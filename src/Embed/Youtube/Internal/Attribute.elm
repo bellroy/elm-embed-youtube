@@ -7,6 +7,7 @@ module Embed.Youtube.Internal.Attribute exposing (Attribute(..))
 type Attribute
     = Width Int
     | Height Int
+    | LazyLoad
     | Autoplay
     | Loop
     | Start Int

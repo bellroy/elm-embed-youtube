@@ -1,5 +1,6 @@
 module Embed.Youtube.Attributes exposing
     ( width, height
+    , lazyLoad
     , autoplay, loop, start, end, mute
     , colorRed, colorWhite, modestBranding, playsInline, hideControls, disableKeyboard, disableFullscreen, disableVideoAnnotations
     , language
@@ -12,6 +13,11 @@ module Embed.Youtube.Attributes exposing
 # Sizing
 
 @docs width, height
+
+
+# iframe HTML Attributes
+
+@docs lazyLoad
 
 
 # Playback
@@ -54,6 +60,17 @@ width =
 height : Int -> Attribute
 height =
     Height
+
+
+
+-- iframe HTML Attributes
+
+
+{-| Set the loading attribute of the iframe to `lazy`
+-}
+lazyLoad : Attribute
+lazyLoad =
+    LazyLoad
 
 
 

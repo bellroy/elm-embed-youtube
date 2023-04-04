@@ -2,7 +2,7 @@ module Embed.Youtube.Internal.View exposing (toIframe, toYoutubeUrl)
 
 import Embed.Youtube.Internal.Attribute as YoutubeAttribute exposing (Attribute(..))
 import Embed.Youtube.Internal.Youtube exposing (Youtube(..), YoutubeVideoId(..))
-import Html as Html exposing (Html)
+import Html exposing (Html)
 import Html.Attributes as HtmlA
 import Url exposing (Protocol(..), Url)
 import Url.Builder as UrlBuilder exposing (QueryParameter)
@@ -78,6 +78,9 @@ toHtmlAttribute attribute =
         Height a ->
             Just <| HtmlA.height a
 
+        LazyLoad ->
+            Just <| HtmlA.attribute "loading" "lazy"
+
         _ ->
             Nothing
 
@@ -92,6 +95,9 @@ toQueryParameters_ (YoutubeVideoId stringYoutubeVideoId) attribute =
             []
 
         Height _ ->
+            []
+
+        LazyLoad ->
             []
 
         Autoplay ->
